@@ -9,35 +9,6 @@
 <rave:navbar pageTitle="${pagetitle}"/>
 <script>
 
-    <%--var workflowName;--%>
-    <%--var expId = "${id}";--%>
-    <%--var Monitordata = " " ;--%>
-    <%--$(document).ready(function(){--%>
-    <%--workflowName = (document.URL.split("?")[1].split("&")[0]).split("=")[1];--%>
-    <%--setTimeout(get_events, 2000);--%>
-    <%--});--%>
-
-    <%--function get_events(){--%>
-    <%--$.ajax({--%>
-    <%--url: '/portal/app/admin/monitorData/'+expId,--%>
-    <%--success: function(data) {--%>
-    <%--Monitordata = "\""+data+"\"";--%>
-    <%--$('#monitoringData').append(data);--%>
-    <%--}--%>
-    <%--});--%>
-    <%--if(Monitordata.indexOf("workflowTerminated")!=-1){}--%>
-    <%--else{--%>
-    <%--setTimeout(get_events, 1000);--%>
-    <%--}--%>
-
-    <%--}--%>
-
-
-    <%--function showTable(table_id){--%>
-    <%--if(expId!=null && expId!=""){--%>
-    <%--document.getElementById(table_id).style.display = "block";--%>
-    <%--}--%>
-    <%--}--%>
 
 </script>
 <div id="workflowdetails" class="container-fluid admin-ui">
@@ -78,25 +49,7 @@
                         </form>
                     </section>
                 </div>
-                <%--<div>--%>
-                <%--<section id="monitoring" style="display: none">--%>
-                <%--<legend><fmt:message key="admin.monitoring.shortTitle"/></legend>--%>
 
-                <%--<div id="test">--%>
-                <%--<table id=monitoringTable class="table table-striped table-bordered table-condensed">--%>
-                <%--<thead>--%>
-                <%--<th><fmt:message key="admin.monitoring.timestamp"/></th>--%>
-                <%--<th><fmt:message key="admin.monitoring.component"/></th>--%>
-                <%--<th><fmt:message key="admin.monitoring.status"/></th>--%>
-                <%--<th><fmt:message key="admin.monitoring.msg"/></th>--%>
-                <%--</thead>--%>
-                <%--<tbody id="monitoringData">--%>
-
-                <%--</tbody>--%>
-                <%--</table>--%>
-                <%--</div>--%>
-                <%--</section>--%>
-                <%--</div>--%>
             </article>
         </div>
     </div>
