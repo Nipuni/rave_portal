@@ -75,7 +75,7 @@ public class WorkflowController {
         workflows.setOffset(offset);
         workflows.setPageSize(getPageSize());
         model.addAttribute(ModelKeys.SEARCHRESULT, workflows);
-
+        model.addAttribute("data",workflowHelperList);
 
         return "templates.admin.workflows";
 

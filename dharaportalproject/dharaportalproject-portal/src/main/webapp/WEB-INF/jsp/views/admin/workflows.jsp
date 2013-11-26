@@ -6,7 +6,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type='text/javascript' src='/portal/static/scripts/jquery.blockUI.js'></script>
 <rave:navbar pageTitle="${pagetitle}"/>
-<script>
+<script type="text/javascript">
 
     var openTable="";
 
@@ -48,6 +48,25 @@
         return '';
 
     }
+
+    <%--var results = "${data}";--%>
+
+    <%--function liveSearch(){--%>
+        <%--var inputText = document.getElementById("qsearch").value;--%>
+        <%--var newValue = inputText.replace(/[^A-Za-z0-9\-_\s]/g, '').replace(/[_\s]/g, '-');--%>
+        <%--var passedData = new Array();--%>
+        <%--<c:forEach items="${data}" var="workflow">--%>
+            <%--var name = "${workflow.name}";--%>
+            <%--var pattern = new RegExp(newValue);--%>
+            <%--var response = pattern.test(name);--%>
+            <%--if(response==true){--%>
+                <%--passedData.push(${workflow});--%>
+            <%--}--%>
+        <%--</c:forEach>--%>
+        <%--document.getElementById("dataTable").style.display = "none";--%>
+        <%--return passedData;--%>
+    <%--}--%>
+
 </script>
 
 <div id="workflowdetails"  class="container-fluid admin-ui">
@@ -63,6 +82,9 @@
                 <rave:admin_listheader_dhara/>
                 <rave:admin_paging/>
 
+                <%--<label for="qsearch">Search:</label>--%>
+                <%--<input id="qsearch" type="text" name="qsearch" onkeyup="liveSearch();" />--%>
+
                 <table id="workflowList" class="table table-striped table-bordered table-condensed">
                     <thead>
                     <tr>
@@ -74,6 +96,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <div id="dataTable">
                     <c:forEach items="${searchResult.resultSet}" var="workflow">
                         <tr>
                             <td>
@@ -104,6 +127,8 @@
                             </td>
                         </tr>
                     </c:forEach>
+                    </div>
+
                     </tbody>
                 </table>
             </article>
