@@ -5,6 +5,7 @@
 <fmt:message key="${pageTitleKey}" var="pagetitle"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type='text/javascript' src='/portal/static/scripts/jquery.blockUI.js'></script>
+<style type="text/css" src='/portal/static/css/dhara.css'></style>
 <rave:navbar pageTitle="${pagetitle}"/>
 <script type="text/javascript">
 
@@ -12,7 +13,7 @@
 
     require(["portal/rave_admin", "jquery"], function(raveAdmin, $){
     $(document).ready(function() {
-        $('').click(function(){
+        $(".defaultDeploy").click(function(){
             $.blockUI({ css: {
                 border: 'none',
                 padding: '15px',
@@ -68,7 +69,11 @@
     <%--}--%>
 
 </script>
-
+<div style="color: #1af81e" id="successMeassage" class="successMessage">
+    <c:if test="${not empty successMessage}">
+            <h4>Workflow Successfully Deployed!</h4>
+    </c:if>
+</div>
 <div id="workflowdetails"  class="container-fluid admin-ui">
     <div class="row-fluid">
         <div class="span2">
@@ -109,20 +114,36 @@
                                 <c:out value="10/10/2013"/>
                             </td>
                             <td>
-                                <a name="default" href="/portal/app/admin/workflow/deploy?workflowId=${workflow.name}">Deafult</a>
+                                <form class="form-inline form-custom" action="<c:url value="/app/admin/workflow/deploy"/>" method="get">
+                                    <fieldset>
+                                        <fmt:message key="admin.workflow.default.button" var="viewDefaultButtonText"/>
+                                        <input type="hidden" name="workflowId" value="<c:out value="${workflow.name}"/>"/>
+                                        <button class="btn btn-primary view-btn" id="viewDefault" type="submit"
+                                                value="${viewDefaultButtonText}">${viewDefaultButtonText}</button>
+                                    </fieldset>
+                                </form>
+                                <%--<a name="default" href="/portal/app/admin/workflow/deploy?workflowId=${workflow.name}">Deafult</a>--%>
                             </td>
                             <td>
-                                <a name="custom" href="/portal/app/admin/workflow/customdeploy?workflowId=${workflow.name}"> Custom</a>
+                                <form class="form-inline form-custom" action="<c:url value="/app/admin/workflow/customdeploy"/>" method="get">
+                                    <fieldset>
+                                        <fmt:message key="admin.workflow.custom.button" var="viewCustomButtonText"/>
+                                        <input type="hidden" name="workflowId" value="<c:out value="${workflow.name}"/>"/>
+                                        <button class="btn btn-primary view-btn" id="viewCustom" type="submit"
+                                                value="${viewCustomButtonText}">${viewCustomButtonText}</button>
+                                    </fieldset>
+                                </form>
+                                <%--<a name="custom" href="/portal/app/admin/workflow/customdeploy?workflowId=${workflow.name}"> Custom</a>--%>
                             </td>
                             <td>
-                                <a href="#" onclick="showTable('${workflow.name}')" >Enter Input</a>
-                                <form class="inner_table" id="${workflow.name}" style="display:none" >
-                                    <c:forEach var="item" items="${workflow.inputs}" varStatus="outer">
-
-                                        Input        ${item.name} (${item.type}) : <input type="text" name="${item.name}/(${item.type})"><br>
-
-                                    </c:forEach>
-                                     <a name="${item.type}" href='javascript:document.location.href=readInputs("${workflow.name}");' >Execute</a>
+                                <form class="form-inline form-custom" action="<c:url value="/app/admin/workflow/details"/>" method="get">
+                                    <fieldset>
+                                        <fmt:message key="admin.workflow.button" var="viewWorkflowButtonText"/>
+                                        <input type="hidden" name="workflowId" value="<c:out value="${workflow.name}"/>"/>
+                                        <input type="hidden" name="workflowDesc" value="<c:out value="${workflow.description}"/>"/>
+                                        <button class="btn btn-primary view-btn" id="viewWorkflowButton" type="submit"
+                                                value="${viewWorkflowButtonText}">${viewWorkflowButtonText}</button>
+                                    </fieldset>
                                 </form>
                             </td>
                         </tr>
